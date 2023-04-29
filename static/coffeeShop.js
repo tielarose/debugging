@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
 let cart = {};
 let orderTotal = 0;
 
-const addButtons = document.querySelectorAll('.add-to-order');
+const addButtons = document.querySelectorAll(".add-to-order");
 for (const button of addButtons) {
-  button.addEventListener('click', () => {
-    const item = button.id;
+  button.addEventListener("click", (evt) => {
+    const item = evt.target.id;
 
-    fetch(`/update-cart.json`)
+    fetch(`/update-cart.json?item=${item}`)
       .then((response) => response.json())
       .then((result) => {
         cart = result.cart;
@@ -21,7 +21,7 @@ for (const button of addButtons) {
 
 // Display the shopping cart items in the right-hand column of the page.
 function displayCart(cartContents) {
-  let tableContents = '';
+  let tableContents = "";
 
   // Object.entries is like Python's dict.items --- it's a nice way to
   // loop over keys and values. Here's how this would look in Python:
@@ -32,10 +32,10 @@ function displayCart(cartContents) {
     tableContents += `<tr><td>${item}</td><td>${price}</td></tr>`;
   }
 
-  document.querySelector('#cart-items').innerHTML = tableContents;
+  document.querySelector("#cart-items").innerHTML = tableContents;
 }
 
 // Display the order total using a dollar sign and two decimal places.
 function displayOrderTotal(total) {
-  document.querySelector('#cart-total').innerHTML = `${total.toFixed(2)}`;
+  document.querySelector("#cart-total").innerHTML = `${total.toFixed(2)}`;
 }
