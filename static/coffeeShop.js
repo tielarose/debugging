@@ -13,9 +13,9 @@ for (const button of addButtons) {
       .then((result) => {
         cart = result.cart;
         orderTotal = result.total;
+        displayCart(cart);
+        displayOrderTotal(orderTotal);
       });
-    displayCart(cart);
-    displayOrderTotal(orderTotal);
   });
 }
 
