@@ -26,7 +26,7 @@ def homepage():
     session["order_total"] = 0
 
     return render_template(
-        "index.html", coffee_price=COFFEE_PRICE, tea_price=TEA_PRICE
+        "index.html", coffee_price=COFFEE_PRICE, tea_price=TEA_PRICE, menu_items=menu_items 
     )
 
 
@@ -55,4 +55,4 @@ def get_item_price(item_name):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", port=5002)
